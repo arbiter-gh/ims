@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock title %}
+
+
+{% block login-register %}
+<li class="nav-item">
+    <a class="nav-link" href="../login/">Log In</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" href="#">Register</a>
+</li>
+{% endblock login-register %}
+
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mt-5">
+            <h1>Register User</h1>
+            <form action="../adduser/" method="post" class="mt-5">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="userSelect" class="form-label">Select User</label>
+                    <select class="form-select" id="userSelect" name="usertype">
+                        <option selected>--select user--</option>
+                        <option value="agent">Agent</option>
+                        <option value="customer">Customer</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="fnameInput" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="fnameInput" placeholder="your first name" name="f_name">
+                </div>
+                <div class="mb-3">
+                    <label for="lnameInput" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="fnameInput" placeholder="your last name" name="l_name">
+                </div>
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="phoneInput" class="form-label">Phone</label>
+                    <input type="phone" class="form-control" id="phoneInput" placeholder="your ph number" name="phone">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="genderInput" id="genderInput1" value="male">
+                        <label class="form-check-label" for="genderInput1">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="genderInput" id="genderInput2"
+                            checked value="female">
+                        <label class="form-check-label" for="genderInput2">
+                            Female
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="passwordInput" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="passwordInput" name="password">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-7">
+            <div class="content-section">
+                <img src="{% static 'img/insurance_with_shadow.png' %}" class="img-fluid" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

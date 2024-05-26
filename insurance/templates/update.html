@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Update{% endblock title %}
+
+{% block login-register %}  {% endblock login-register %}
+
+{% block main %}
+<div class="form-container">
+    <form action="../updateForm/{{ u.id }}" method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="fnameInput" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="fnameInput" placeholder="your first name" name="f_name" value={{ u.f_name }}>
+        </div>
+        <div class="mb-3">
+            <label for="lnameInput" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="fnameInput" placeholder="your last name" name="l_name" value={{ u.l_name }}>
+        </div>
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" name="email" value={{ u.email }} >
+        </div>
+        <div class="mb-3">
+            <label for="phoneInput" class="form-label">Phone</label>
+            <input type="phone" class="form-control" id="phoneInput" placeholder="your ph number" name="phone" value={{ u.phone }} >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="genderInput1" {% if u.gender == 'male' %} checked {% endif %}  value="male">
+                <label class="form-check-label" for="genderInput1">
+                    Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="genderInput2"
+                {% if u.gender == 'female' %} checked {% endif %} value="female">
+                <label class="form-check-label" for="genderInput2">
+                    Female
+                </label>
+            </div>
+        </div>
+   
+        <div class="mb-3">
+            <button type="submit" class="btn">Update</button>
+            <a href="">
+                <button class="btn cancel">Cancel</button>
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock main %}
+
+

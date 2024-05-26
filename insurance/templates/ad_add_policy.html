@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin|New Policy{% endblock title %}
+
+{% block login-register %}{% endblock login-register %}
+
+{% block main %}
+<div class="form-container">
+    <form action="../ad_add_new_policy" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="pnameInput" class="form-label">Insuor</label>
+            <input type="text" class="form-control" id="pnameInput" placeholder="policy name" name="insuor">
+        </div>
+        <div class="mb-3">
+            <label for="ptypeInput" class="form-label">Life Cover</label>
+            <input type="text" class="form-control" id="ptypeInput" placeholder="policy type" name="life_cover">
+        </div>
+        <div class="mb-3">
+            <label for="pentryageminInput" class="form-label">Cover Till Age</label>
+            <input type="text" class="form-control" id="pentryageminInput" placeholder="policy entry age min"
+                name="cover_till_age">
+        </div>
+        <div class="mb-3">
+            <label for="pmaturityageInput" class="form-label">Claim settelment</label>
+            <input type="text" class="form-control" id="pmaturityageInput" placeholder="policy maturity age"
+                name="claim_settelment">
+        </div>
+        <div class="mb-3">
+            <label for="ptermminInput" class="form-label">Pay monthly</label>
+            <input type="text" class="form-control" id="ptermminInput" placeholder="policy term min" name="pay_monthly">
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn">Add</button>
+        </div>
+    </form>
+</div>
+{% endblock main %}

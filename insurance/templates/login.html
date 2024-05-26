@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock title %}
+
+{% block login-register %}
+<li class="nav-item">
+    <a class="nav-link active" href="#">Log In</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="../register/">Register</a>
+</li>
+{% endblock login-register %}
+
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mt-5" id="login">
+            <h1>Log In</h1>
+            <form action="../verify/" method="post" class="mt-5">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="userSelect" class="form-label">Select User</label>
+                    <select class="form-select" id="userSelect" name="usertype">
+                        <option selected>--select user--</option>
+                        <option value="admin">Admin</option>
+                        <option value="agent">Agent</option>
+                        <option value="customer">Customer</option>
+                      </select>
+                </div>
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="passwordInput" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="passwordInput" name="password">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-7">
+            <div class="content-section">
+                <img src="{% static 'img/insurance_with_shadow.png' %}" class="img-fluid" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

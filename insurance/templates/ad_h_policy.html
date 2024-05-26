@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Admin-health policy{% endblock title %}
+
+{% block ham %}
+<label id="hamburger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <a href="../ad_policy_cat/{{ u.id }}"><i class="fa-solid fa-xmark"></i></a>
+</label>
+{% endblock ham %}
+
+{% block login-register %}
+<li class="nav-item">
+    <a class="btn yellow" href="../ad_add_h_policy">Add a new Policy</a>
+</li>
+{% endblock login-register %}
+
+{% block main %}
+<table class="table">
+    <tr class="table-info">
+        <th>ID</th>
+        <th>Policy Name</th>
+        <th>Cover amount</th>
+        <th>Policy period</th>
+        <th>Premium</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for h in obj %}
+    <tr>
+        <td>{{h.id}}</td>
+        <td>{{h.policy_name}}</td>
+        <td>₹ {{h.cover_amount|intcomma}}</td>
+        <td>{{h.policy_period}} year(s)</td>
+        <td>₹ {{h.pay_monthly|intcomma}}</td>
+        <td><a class="btn " href="../ad_update_h_policy/{{h.id}}">Edit</a></td>
+        <td><a class="btn red" href="../ad_delete_h_policy/{{ h.id }}">Delete</a></td>
+    </tr>
+
+    <!--
+    <div class="modal fade" id="p_confrim_del2" tabindex="-1" aria-labelledby="p_confrim_del2Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="p_confrim_del2Label">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>ID: {{h.id}}</h6>
+                    <h6>Insuor: {{h.policy_name}}</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Cancel</button>
+                    <a >
+                        <button type="button" class="btn red" id="btnHdel">Confirm Delete</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+    {% endfor %}
+</table>
+
+{% endblock main %}

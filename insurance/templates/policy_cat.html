@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Admin-Policies{% endblock title %}
+
+{% block ham %}
+<label id="hamburger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <a href="../ad_insurance/{{ u.id }}"><i class="fa-solid fa-xmark"></i></a>
+</label>
+{% endblock ham %}
+
+{% block login-register %}{% endblock login-register %}
+
+
+{% block main %}
+<div class="container">
+    <div class="row">
+
+        <div class="card">
+            <img src="{% static 'img/life.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <a href="../policy" class="btn red">Term Life Insurance</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'img/health.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <a href="../policy" class="btn red">Health Insurance</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

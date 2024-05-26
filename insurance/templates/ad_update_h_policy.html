@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Admin-health policy{% endblock title %}
+
+{% block login-register %}{% endblock login-register %}
+
+{% block main %}
+<div class="form-container">
+
+    <form action="../ad_updated_h_policy/{{obj.id}}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="hNameInput" class="form-label">Policy Name</label>
+            <input type="text" class="form-control" id="hNameInput" placeholder="policy name" name="policy_name"
+                value="{{obj.policy_name}}">
+        </div>
+        <div class="mb-3">
+            <label for="hcoverAmountInput" class="form-label">Cover Amount</label>
+            <input type="text" class="form-control" id="hcoverAmountInput" placeholder="cover_amount"
+                name="cover_amount" value="{{obj.cover_amount}}">
+        </div>
+        <div class="mb-3">
+            <label for="hpPerirodInput" class="form-label">Policy period</label>
+            <input type="text" class="form-control" id="hpPerirodInput" placeholder="policy period" name="policy_period"
+                value="{{obj.policy_period}}">
+        </div>
+        <div class="mb-3">
+            <label for="hmonthlyPayInput" class="form-label">Premium</label>
+            <input type="text" class="form-control" id="hmonthlyPayInput" placeholder="monthly_premium"
+                name="pay_monthly" value="{{obj.pay_monthly}}">
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn">Update</button>
+            <a href="../ad_h_policy">
+                <button class="btn cancel">Cancel</button>
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock main %}

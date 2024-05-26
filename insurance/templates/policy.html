@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}View Policy{% endblock title %}
+
+{% block login-register %}{% endblock login-register %}
+
+{% block main %}
+<table class="table">
+    <tr class="table-info">
+        <th>ID</th>
+        <th>Insuor</th>
+        <th>Life cover</th>
+        <th>Cover Till Age</th>
+        <th>Claim settelment</th>
+        <th>Pay monthly</th>
+    </tr>
+    {% for p in policies %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.insuor }}</td>
+        <td>₹ {{ p.life_cover|intcomma }}</td>
+        <td>{{ p.cover_till_age }} years</td>
+        <td>{{ p.claim_settelment }} %</td>
+        <td><button class="btn red" id="btnPurchase">₹ {{ p.pay_monthly|intcomma }}</button></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock main %}

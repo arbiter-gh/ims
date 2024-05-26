@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin-show users{% endblock title %}
+
+{% block ham %}
+<label id="hamburger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+   <a href="../ad_insurance/{{ u.id }}"><i class="fa-solid fa-xmark"></i></a>
+</label>
+{% endblock ham %}
+
+{% block login-register %}
+
+<li class="nav-item">
+    <a class="btn" href="../ad_new_user">Add a new User</a>
+</li>
+
+{% endblock login-register %}
+
+{% block main %}
+
+<table class="table">
+    <tr class="table-info">
+        <th>ID</th>
+        <th>User Type</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Gender</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for u in users %}
+    <tr>
+        <td>{{ u.id }}</td>
+        <td class="table-{% if u.user_type == 'admin' %}danger{% endif %}">{{ u.user_type }}</td>
+        <td>{{ u.f_name }} {{ u.l_name }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.phone }}</td>
+        <td>{{ u.gender }}</td>
+        <td>{{ u.password }}</td>
+        <td><a class="btn" id="btnEdit" href="../ad_update_u/{{ u.id }}">Edit</a></td>
+        <td><a class="btn" id="btnDelete" href="../ad_delete_u/{{ u.id }}">Delete</a></td>
+    </tr>
+
+    {% comment %} data-bs-toggle="modal" data-bs-target="#u_confirm_del"{% endcomment %}
+
+    {% comment %}<div class="modal fade" id="u_confirm_del" tabindex="-1" aria-labelledby="u_confirm_delLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="u_confirm_delLabel">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>User name : {{u.f_name}} {{u.l_name}}</h6>
+                    <h6>User type : {{u.user_type}}</h6>
+                    <h6>User email : {{u.email}}</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Cancel</button>
+                    <a href="../ad_delete_u/{{ u.id }}">
+                        <button type="button" class="btn" id="btnDelete">Confirm Delete</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>{% endcomment %}
+    {% endfor %}
+</table>
+
+{% endblock main %}

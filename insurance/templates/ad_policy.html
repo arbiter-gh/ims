@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+
+{% block title %}Admin-Policy{% endblock title %}
+
+{% comment %}{% block ham %}
+<label id="hamburger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+   <a href="../ad_policy_cat/{{ u.id }}"><i class="fa-solid fa-xmark"></i></a>
+</label>
+{% endblock ham %}{% endcomment %}
+
+{% block login-register %}
+<li class="nav-item">
+    <a class="btn yellow" href="../ad_add_policy">Add a new Policy</a>
+</li>
+{% endblock login-register %}
+
+{% block main %}
+<table class="table">
+    <tr class="table-info">
+        <th>ID</th>
+        <th>Insuor</th>
+        <th>Life cover</th>
+        <th>Cover Till Age</th>
+        <th>Claim settelment</th>
+        <th>Pay monthly</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for p in policies %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.insuor }}</td>
+        <td>₹ {{ p.life_cover|intcomma }}</td>
+        <td>{{ p.cover_till_age }} years</td>
+        <td>{{ p.claim_settelment }} %</td>
+        <td>₹ {{ p.pay_monthly|intcomma }}</td>
+        <td><a class="btn" id="btnEdit" href="../ad_update_p/{{ p.id }}">Edit</a></td>
+        <td><a class="btn red" href="../ad_delete_policy/{{ p.id }}">Delete</a></td>
+    </tr>
+    <!--
+    <div class="modal fade" id="p_confrim_del" tabindex="-1" aria-labelledby="p_confrim_delLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="p_confrim_delLabel">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>ID: {{p.id}}</h6>
+                    <h6>Insuor: {{p.insuor}}</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-bs-dismiss="modal">Cancel</button>
+                    <a >
+                        <button type="button" class="btn red" >Confirm Delete</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    {% endfor %}
+</table>
+
+{% endblock main %}

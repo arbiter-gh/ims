@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin-ADD health policy{% endblock title %}
+
+{% block login-register %}{% endblock login-register %}
+
+{% block main %}
+<div class="form-container">
+    <form action="../ad_added_h_policy" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="hNameInput" class="form-label">Policy Name</label>
+            <input type="text" class="form-control" id="hNameInput" placeholder="policy name" name="policy_name"
+                >
+        </div>
+        <div class="mb-3">
+            <label for="hcoverAmountInput" class="form-label">Cover Amount</label>
+            <input type="text" class="form-control" id="hcoverAmountInput" placeholder="cover amount"
+                name="cover_amount">
+        </div>
+        <div class="mb-3">
+            <label for="hpPerirodInput" class="form-label">Policy period</label>
+            <input type="text" class="form-control" id="hpPerirodInput" placeholder="policy period" name="policy_period"
+               >
+        </div>
+        <div class="mb-3">
+            <label for="hmonthlyPayInput" class="form-label">Premium</label>
+            <input type="text" class="form-control" id="hmonthlyPayInput" placeholder="monthly premium"
+                name="pay_monthly" >
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn">Add</button>
+            <a href="../ad_h_policy">
+                <button class="btn cancel">Cancel</button>
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock main %}

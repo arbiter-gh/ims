@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}health policy{% endblock title %}
+
+{% block ham %}
+<label id="hamburger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <a href="../policy_cat/{{ u.id }}"><i class="fa-solid fa-xmark"></i></a>
+</label>
+{% endblock ham %}
+
+{% block login-register %}
+
+{% endblock login-register %}
+
+{% block main %}
+<table class="table">
+    <tr class="table-info">
+        <th>ID</th>
+        <th>Policy Name</th>
+        <th>Cover amount</th>
+        <th>Policy period</th>
+        <th>Premium</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for h in obj %}
+    <tr>
+        <td>{{h.id}}</td>
+        <td>{{h.policy_name}}</td>
+        <td>₹ {{h.cover_amount|intcomma}}</td>
+        <td>{{h.policy_period}} year(s)</td>
+        <td><a href="btn red">₹ {{h.pay_monthly|intcomma}}</a></td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock main %}

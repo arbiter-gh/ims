@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Insurance{% endblock title %}
+
+{% block ham %}
+<label id="hamburger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <i class="fa-solid fa-bars"></i>
+</label>
+{% endblock ham %}
+
+{% block login-register %} {% endblock login-register %}
+
+{% block main %}
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+
+        <div class="mt-3">
+            <div class="profile">
+                <a href="../update/{{ u.id }}">
+                    <img class="rounded-circle" src="{% static 'img/default.jpg' %}" alt="profile pic" width="100px"
+                        height="100px">
+                </a>
+                <div class="userName">
+                    {{ u.f_name }}
+                </div>
+                <div class="userType">
+                    [{{ u.user_type }}]
+                </div>
+
+            </div>
+
+            {% block sideMenu %}
+            <div class="sideMenu-items">
+                <ul>
+                    <li class="sideMenu-item">
+                        <a href="../update/{{u.id}}">Profile</a>
+                    </li>
+                    <li class="sideMenu-item">
+                        <a href="../dashboard/{{u.id}}">Dhashboard</a>
+                    </li>
+                    <li class="sideMenu-item">
+                        <a href="../policy_cat">Policies</a>
+                    </li>
+                </ul>
+            </div>
+            {% endblock sideMenu %}
+        </div>
+    </div>
+</div>
+
+{% block page_content %}
+
+<div class="container px-4 py-5" id="custom-cards">
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        <div class="col">
+
+            <a href="../dashboard/{{u.id}}">
+                <div class="card card-cover h-100 overflow-hidden text-white  rounded-4 shadow-lg"
+                    style="background-image: url('{% static 'img/dashboard.jpg'%}');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-shadow-4">Dash Board</h2>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                {% comment %}<img src="https://github.com/twbs.png" alt="Bootstrap" width="32"
+                                    height="32" class="rounded-circle border border-white">{% endcomment %}
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" /></svg>
+                                <small></small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3" /></svg>
+                                <small></small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="../policy_cat">
+                <div class="card card-cover h-100 overflow-hidden text-white  rounded-4 shadow-lg"
+                    style="background-image: url('{% static 'img/policies.jpg'%}');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-shadow-4">Policies</h2>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                {% comment %}<img src="https://github.com/twbs.png" alt="Bootstrap" width="32"
+                                    height="32" class="rounded-circle border border-white">{% endcomment %}
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" /></svg>
+                                <small></small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3" /></svg>
+                                <small></small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="../update/{{u.id}}">
+                <div class="card card-cover h-100 overflow-hidden text-white rounded-4 shadow-lg"
+                    style="background-image: url('{% static 'img/update_profile.png'%}');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-shadow-4">Update Profile</h2>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                {% comment %}<img src="https://github.com/twbs.png" alt="Bootstrap" width="32"
+                                    height="32" class="rounded-circle border border-white">{% endcomment %}
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" /></svg>
+                                <small></small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3" /></svg>
+                                <small></small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock page_content %}
+
+{% endblock main %}
